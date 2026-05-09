@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Monitoring and Analysis System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <main class="app-shell">
+        <section class="hero-panel">
+            <div class="hero-topline">Weather Monitoring and Analysis System</div>
+            <h1 class="hero-title">Live city weather with richer climate insights.</h1>
+            <p class="hero-description">
+                Search any city to open a complete weather dashboard with live conditions, atmosphere details,
+                comfort analysis, and a polished UI made for a stronger interview impression.
+            </p>
+
+            <div class="hero-city-card">
+                <div>
+                    <p class="mini-label">Focused Location</p>
+                    <h2 class="hero-city-name">New York</h2>
+                    <p class="hero-city-caption">Dynamic city weather snapshot</p>
+                </div>
+                <div class="hero-temp-wrap">
+                    <p class="hero-city-temp">22&deg;C</p>
+                    <span class="hero-condition-pill">Live</span>
+                </div>
+            </div>
+
+            <div class="hero-highlights">
+                <article class="highlight-card">
+                    <p class="mini-label">Climate Snapshot</p>
+                    <p class="highlight-value climate-summary">Comfortable</p>
+                    <p class="highlight-text climate-text">Balanced humidity and mild temperature.</p>
+                </article>
+                <article class="highlight-card">
+                    <p class="mini-label">Visibility</p>
+                    <p class="highlight-value visibility-highlight">10 km</p>
+                    <p class="highlight-text visibility-text">Suitable for travel and outdoor movement.</p>
+                </article>
+                <article class="highlight-card">
+                    <p class="mini-label">Wind Outlook</p>
+                    <p class="highlight-value wind-highlight">Calm</p>
+                    <p class="highlight-text wind-text">Gentle breeze with low impact.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="dashboard-panel">
+            <div class="dashboard-frame">
+                <div class="search-header">
+                    <div>
+                        <p class="mini-label">Live Search</p>
+                        <h2 class="search-title">Search a city and open the dashboard</h2>
+                    </div>
+                    <div class="status-dot-wrap">
+                        <span class="status-dot"></span>
+                        <span>HTTPS live weather status</span>
+                    </div>
+                </div>
+
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="Search city like London, Tokyo, Delhi" spellcheck="false">
+                    <button type="button" class="search-button" aria-label="Search weather">
+                        <img src="weather-app-img/images/search.png" alt="">
+                    </button>
+                </div>
+
+                <div class="chip-section">
+                    <p class="chip-title">Quick Cities</p>
+                    <div class="quick-chips" id="quickChips">
+                        <button type="button" class="chip">New York</button>
+                        <button type="button" class="chip">London</button>
+                        <button type="button" class="chip">Tokyo</button>
+                        <button type="button" class="chip">Mumbai</button>
+                        <button type="button" class="chip">Sydney</button>
+                    </div>
+                </div>
+
+                <div class="chip-section">
+                    <div class="recent-heading">
+                        <p class="chip-title">Recent Searches</p>
+                        <button type="button" class="clear-history">Clear</button>
+                    </div>
+                    <div class="recent-searches" id="recentSearches">
+                        <p class="empty-state">Your searched cities will appear here.</p>
+                    </div>
+                </div>
+
+                <p class="error-message" aria-live="polite"></p>
+
+                <div class="weather-layout">
+                    <section class="primary-weather-card">
+                        <div class="primary-top">
+                            <div>
+                                <p class="live-badge">Live Conditions</p>
+                                <h3 class="city">New York, United States</h3>
+                                <p class="condition">Light rain</p>
+                            </div>
+                            <div class="day-state">
+                                <span class="day-indicator">Day</span>
+                                <span class="observation-time">Updated just now</span>
+                            </div>
+                        </div>
+
+                        <div class="primary-main">
+                            <div class="temperature-cluster">
+                                <img src="weather-app-img/images/rain.png" class="weather-icon" alt="Weather icon">
+                                <div>
+                                    <p class="temp">22&deg;C</p>
+                                    <p class="feels-like">Feels like 21&deg;C</p>
+                                </div>
+                            </div>
+
+                            <div class="location-meta">
+                                <div class="meta-pill">
+                                    <span class="meta-label">Timezone</span>
+                                    <span class="timezone">UTC+0</span>
+                                </div>
+                                <div class="meta-pill">
+                                    <span class="meta-label">Local Date</span>
+                                    <span class="local-date">Mon, 10 Feb</span>
+                                </div>
+                                <div class="meta-pill">
+                                    <span class="meta-label">Region</span>
+                                    <span class="region">New York</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="analytics-grid">
+                        <article class="metric-card">
+                            <p class="mini-label">Humidity</p>
+                            <p class="metric-value humidity">50%</p>
+                            <p class="metric-note humidity-note">Balanced indoor comfort.</p>
+                        </article>
+                        <article class="metric-card">
+                            <p class="mini-label">Wind Speed</p>
+                            <p class="metric-value wind">15 km/h</p>
+                            <p class="metric-note wind-note">Breeze impact is low.</p>
+                        </article>
+                        <article class="metric-card">
+                            <p class="mini-label">Pressure</p>
+                            <p class="metric-value pressure">1012 mb</p>
+                            <p class="metric-note pressure-note">Atmosphere looks steady.</p>
+                        </article>
+                        <article class="metric-card">
+                            <p class="mini-label">Visibility</p>
+                            <p class="metric-value visibility">10 km</p>
+                            <p class="metric-note visibility-note">Good visual range outdoors.</p>
+                        </article>
+                    </section>
+
+                    <section class="insight-row">
+                        <article class="insight-panel">
+                            <div class="insight-header">
+                                <p class="mini-label">Modern Interface</p>
+                                <h4>Climate Snapshot</h4>
+                            </div>
+                            <div class="snapshot-score-wrap">
+                                <div class="snapshot-ring">
+                                    <span class="snapshot-score">82</span>
+                                </div>
+                                <div>
+                                    <p class="snapshot-title">Outdoor comfort score</p>
+                                    <p class="snapshot-description">Comfort level is strong for regular activity.</p>
+                                </div>
+                            </div>
+                            <div class="snapshot-tags">
+                                <span class="tag uv-index">UV 4</span>
+                                <span class="tag cloud-cover">Cloud Cover 22%</span>
+                                <span class="tag precipitation">Precipitation 0 mm</span>
+                            </div>
+                        </article>
+
+                        <article class="insight-panel">
+                            <div class="insight-header">
+                                <p class="mini-label">Live Analysis</p>
+                                <h4>Weather Advisory</h4>
+                            </div>
+                            <p class="advisory-text">
+                                Pleasant conditions with stable atmosphere and clear travel comfort.
+                            </p>
+                            <div class="advisory-grid">
+                                <div class="advisory-item">
+                                    <span class="advisory-key">Wind Dir</span>
+                                    <span class="wind-direction advisory-value">NE</span>
+                                </div>
+                                <div class="advisory-item">
+                                    <span class="advisory-key">UV Index</span>
+                                    <span class="uv-value advisory-value">4</span>
+                                </div>
+                                <div class="advisory-item">
+                                    <span class="advisory-key">Clouds</span>
+                                    <span class="cloud-value advisory-value">22%</span>
+                                </div>
+                                <div class="advisory-item">
+                                    <span class="advisory-key">Rainfall</span>
+                                    <span class="precip-value advisory-value">0 mm</span>
+                                </div>
+                            </div>
+                        </article>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const geocodingApiUrl = "https://geocoding-api.open-meteo.com/v1/search";
+        const forecastApiUrl = "https://api.open-meteo.com/v1/forecast";
+        const storageKey = "weather_recent_searches";
+
+        const searchInput = document.querySelector(".search-input");
+        const searchButton = document.querySelector(".search-button");
+        const errorMessage = document.querySelector(".error-message");
+        const recentSearchesContainer = document.getElementById("recentSearches");
+        const quickChipsContainer = document.getElementById("quickChips");
+        const clearHistoryButton = document.querySelector(".clear-history");
+        const dashboardFrame = document.querySelector(".dashboard-frame");
+
+        const cityElement = document.querySelector(".city");
+        const conditionElement = document.querySelector(".condition");
+        const tempElement = document.querySelector(".temp");
+        const feelsLikeElement = document.querySelector(".feels-like");
+        const observationTimeElement = document.querySelector(".observation-time");
+        const timezoneElement = document.querySelector(".timezone");
+        const localDateElement = document.querySelector(".local-date");
+        const regionElement = document.querySelector(".region");
+        const humidityElement = document.querySelector(".humidity");
+        const windElement = document.querySelector(".wind");
+        const pressureElement = document.querySelector(".pressure");
+        const visibilityElement = document.querySelector(".visibility");
+        const humidityNoteElement = document.querySelector(".humidity-note");
+        const windNoteElement = document.querySelector(".wind-note");
+        const pressureNoteElement = document.querySelector(".pressure-note");
+        const visibilityNoteElement = document.querySelector(".visibility-note");
+        const weatherIcon = document.querySelector(".weather-icon");
+        const dayIndicatorElement = document.querySelector(".day-indicator");
+        const snapshotScoreElement = document.querySelector(".snapshot-score");
+        const snapshotTitleElement = document.querySelector(".snapshot-title");
+        const snapshotDescriptionElement = document.querySelector(".snapshot-description");
+        const climateSummaryElement = document.querySelector(".climate-summary");
+        const climateTextElement = document.querySelector(".climate-text");
+        const visibilityHighlightElement = document.querySelector(".visibility-highlight");
+        const visibilityTextElement = document.querySelector(".visibility-text");
+        const windHighlightElement = document.querySelector(".wind-highlight");
+        const windTextElement = document.querySelector(".wind-text");
+        const advisoryTextElement = document.querySelector(".advisory-text");
+        const windDirectionElement = document.querySelector(".wind-direction");
+        const uvValueElement = document.querySelector(".uv-value");
+        const cloudValueElement = document.querySelector(".cloud-value");
+        const precipValueElement = document.querySelector(".precip-value");
+        const uvIndexTagElement = document.querySelector(".uv-index");
+        const cloudCoverTagElement = document.querySelector(".cloud-cover");
+        const precipitationTagElement = document.querySelector(".precipitation");
+        const heroCityNameElement = document.querySelector(".hero-city-name");
+        const heroCityTempElement = document.querySelector(".hero-city-temp");
+        const heroCityCaptionElement = document.querySelector(".hero-city-caption");
+        const heroConditionPillElement = document.querySelector(".hero-condition-pill");
+
+        const weatherCodeMap = {
+            0: { description: "Clear sky", icon: "clear" },
+            1: { description: "Mainly clear", icon: "clear" },
+            2: { description: "Partly cloudy", icon: "clouds" },
+            3: { description: "Overcast", icon: "clouds" },
+            45: { description: "Fog", icon: "mist" },
+            48: { description: "Depositing rime fog", icon: "mist" },
+            51: { description: "Light drizzle", icon: "drizzle" },
+            53: { description: "Moderate drizzle", icon: "drizzle" },
+            55: { description: "Dense drizzle", icon: "drizzle" },
+            56: { description: "Freezing drizzle", icon: "drizzle" },
+            57: { description: "Heavy freezing drizzle", icon: "drizzle" },
+            61: { description: "Slight rain", icon: "rain" },
+            63: { description: "Moderate rain", icon: "rain" },
+            65: { description: "Heavy rain", icon: "rain" },
+            66: { description: "Freezing rain", icon: "rain" },
+            67: { description: "Heavy freezing rain", icon: "rain" },
+            71: { description: "Slight snow", icon: "snow" },
+            73: { description: "Moderate snow", icon: "snow" },
+            75: { description: "Heavy snow", icon: "snow" },
+            77: { description: "Snow grains", icon: "snow" },
+            80: { description: "Rain showers", icon: "rain" },
+            81: { description: "Moderate rain showers", icon: "rain" },
+            82: { description: "Violent rain showers", icon: "rain" },
+            85: { description: "Snow showers", icon: "snow" },
+            86: { description: "Heavy snow showers", icon: "snow" },
+            95: { description: "Thunderstorm", icon: "rain" },
+            96: { description: "Thunderstorm with hail", icon: "rain" },
+            99: { description: "Heavy thunderstorm with hail", icon: "rain" }
+        };
+
+        function getWeatherDetails(weatherCode) {
+            return weatherCodeMap[weatherCode] || { description: "Variable conditions", icon: "clouds" };
+        }
+
+        function parseLocalTimestamp(timestamp) {
+            const parts = timestamp.match(/\d+/g);
+            if (!parts || parts.length < 5) {
+                return null;
+            }
+
+            const [year, month, day, hour, minute] = parts.map(Number);
+            return new Date(year, month - 1, day, hour, minute);
+        }
+
+        function formatLocalDate(timestamp) {
+            const date = parseLocalTimestamp(timestamp);
+            if (!date || Number.isNaN(date.getTime())) {
+                return "Unavailable";
+            }
+
+            return date.toLocaleDateString("en-US", {
+                weekday: "short",
+                day: "numeric",
+                month: "short"
+            });
+        }
+
+        function formatObservationTime(timestamp) {
+            const date = parseLocalTimestamp(timestamp);
+            if (!date || Number.isNaN(date.getTime())) {
+                return "Updated recently";
+            }
+
+            return `Updated ${date.toLocaleTimeString("en-US", {
+                hour: "numeric",
+                minute: "2-digit"
+            })}`;
+        }
+
+        function setWeatherIcon(iconName, description) {
+            weatherIcon.src = `weather-app-img/images/${iconName}.png`;
+            weatherIcon.alt = description;
+        }
+
+        function updateTheme(iconName, isDay) {
+            if (iconName === "clear") {
+                dashboardFrame.dataset.theme = isDay ? "sunny" : "night";
+                return;
+            }
+
+            if (iconName === "rain" || iconName === "drizzle") {
+                dashboardFrame.dataset.theme = "rainy";
+                return;
+            }
+
+            if (iconName === "snow") {
+                dashboardFrame.dataset.theme = "snowy";
+                return;
+            }
+
+            if (iconName === "mist") {
+                dashboardFrame.dataset.theme = "misty";
+                return;
+            }
+
+            dashboardFrame.dataset.theme = isDay ? "cloudy" : "night";
+        }
+
+        function describeHumidity(humidity) {
+            if (humidity >= 80) {
+                return "Air feels heavy and highly humid.";
+            }
+            if (humidity >= 60) {
+                return "Moderate moisture level in the air.";
+            }
+            if (humidity >= 40) {
+                return "Balanced indoor comfort.";
+            }
+            return "Air feels dry and lighter.";
+        }
+
+        function describeWind(speed) {
+            if (speed >= 35) {
+                return "Strong wind may affect travel comfort.";
+            }
+            if (speed >= 20) {
+                return "Noticeable breeze across the city.";
+            }
+            if (speed >= 10) {
+                return "Gentle breeze with low impact.";
+            }
+            return "Very calm wind conditions.";
+        }
+
+        function describePressure(pressure) {
+            if (pressure >= 1020) {
+                return "Atmosphere looks steady and settled.";
+            }
+            if (pressure >= 1008) {
+                return "Pressure is in a healthy range.";
+            }
+            return "Pressure is slightly lower than average.";
+        }
+
+        function describeVisibility(visibilityKm) {
+            if (visibilityKm >= 10) {
+                return "Suitable for travel and outdoor movement.";
+            }
+            if (visibilityKm >= 5) {
+                return "Visibility is fair with mild haze.";
+            }
+            return "Reduced visual range outdoors.";
+        }
+
+        function buildAdvisory(currentWeather) {
+            const temperature = currentWeather.temperature_2m;
+            const humidity = currentWeather.relative_humidity_2m;
+            const windSpeed = currentWeather.wind_speed_10m;
+            const precip = currentWeather.precipitation;
+            const cloudCover = currentWeather.cloud_cover ?? 0;
+
+            if (precip > 0.5) {
+                return "Rainfall is active, so carrying an umbrella is a smart choice.";
+            }
+            if (windSpeed >= 30) {
+                return "Wind is fairly strong, so outdoor plans may feel a bit uncomfortable.";
+            }
+            if (temperature >= 32) {
+                return "The city is running hot, so lighter clothing and water are recommended.";
+            }
+            if (temperature <= 8) {
+                return "Cool weather is active, so layering up will improve comfort.";
+            }
+            if (humidity >= 80) {
+                return "Humidity is quite high, so conditions may feel warmer than the actual temperature.";
+            }
+            if (cloudCover <= 20) {
+                return "Skies are fairly open right now, which is great for outdoor plans.";
+            }
+
+            return "Conditions look comfortable for regular city movement and outdoor activity.";
+        }
+
+        function calculateComfortScore(currentWeather) {
+            let score = 100;
+            const temperature = currentWeather.temperature_2m;
+            const humidity = currentWeather.relative_humidity_2m;
+            const windSpeed = currentWeather.wind_speed_10m;
+            const visibilityKm = currentWeather.visibility / 1000;
+            const precip = currentWeather.precipitation;
+
+            score -= Math.min(Math.abs(temperature - 24) * 2.2, 28);
+            score -= humidity > 70 ? (humidity - 70) * 0.45 : 0;
+            score -= humidity < 30 ? (30 - humidity) * 0.35 : 0;
+            score -= windSpeed > 25 ? (windSpeed - 25) * 0.6 : 0;
+            score -= visibilityKm < 6 ? (6 - visibilityKm) * 4 : 0;
+            score -= precip > 0 ? Math.min(precip * 5, 20) : 0;
+
+            return Math.max(28, Math.min(97, Math.round(score)));
+        }
+
+        function getClimateSummary(score) {
+            if (score >= 82) {
+                return {
+                    title: "Excellent",
+                    text: "Conditions feel welcoming for outdoor plans and movement.",
+                    label: "Outdoor comfort score"
+                };
+            }
+            if (score >= 68) {
+                return {
+                    title: "Comfortable",
+                    text: "Most people should find the weather pleasant overall.",
+                    label: "Daily comfort score"
+                };
+            }
+            if (score >= 52) {
+                return {
+                    title: "Moderate",
+                    text: "The weather is manageable with a bit of planning.",
+                    label: "City condition score"
+                };
+            }
+
+            return {
+                title: "Challenging",
+                text: "Conditions are more demanding for long outdoor activity.",
+                label: "Exposure score"
+            };
+        }
+
+        function getWindHighlight(speed) {
+            if (speed >= 30) {
+                return "Strong";
+            }
+            if (speed >= 18) {
+                return "Active";
+            }
+            if (speed >= 8) {
+                return "Breezy";
+            }
+            return "Calm";
+        }
+
+        function getRecentSearches() {
+            try {
+                return JSON.parse(localStorage.getItem(storageKey)) || [];
+            } catch (error) {
+                return [];
+            }
+        }
+
+        function saveRecentSearch(city) {
+            const trimmedCity = city.trim();
+            if (!trimmedCity) {
+                return;
+            }
+
+            const recentSearches = getRecentSearches()
+                .filter((item) => item.toLowerCase() !== trimmedCity.toLowerCase());
+            recentSearches.unshift(trimmedCity);
+
+            localStorage.setItem(storageKey, JSON.stringify(recentSearches.slice(0, 6)));
+            renderRecentSearches();
+        }
+
+        function renderRecentSearches() {
+            const recentSearches = getRecentSearches();
+
+            if (!recentSearches.length) {
+                recentSearchesContainer.innerHTML = '<p class="empty-state">Your searched cities will appear here.</p>';
+                return;
+            }
+
+            recentSearchesContainer.innerHTML = recentSearches
+                .map((city) => `<button type="button" class="history-chip">${city}</button>`)
+                .join("");
+        }
+
+        function showError(message) {
+            errorMessage.textContent = message;
+        }
+
+        function clearError() {
+            errorMessage.textContent = "";
+        }
+
+        async function findLocation(city) {
+            const response = await fetch(`${geocodingApiUrl}?name=${encodeURIComponent(city)}&count=1&language=en&format=json`);
+            const data = await response.json();
+
+            if (!response.ok || !data.results || !data.results.length) {
+                throw new Error(data.reason || "Unable to find that city.");
+            }
+
+            return data.results[0];
+        }
+
+        async function fetchWeather(location) {
+            const params = new URLSearchParams({
+                latitude: location.latitude,
+                longitude: location.longitude,
+                timezone: "auto",
+                forecast_days: "1",
+                current: [
+                    "temperature_2m",
+                    "relative_humidity_2m",
+                    "apparent_temperature",
+                    "is_day",
+                    "precipitation",
+                    "weather_code",
+                    "cloud_cover",
+                    "pressure_msl",
+                    "wind_speed_10m",
+                    "wind_direction_10m",
+                    "visibility"
+                ].join(","),
+                daily: [
+                    "uv_index_max",
+                    "sunrise",
+                    "sunset"
+                ].join(",")
+            });
+
+            const response = await fetch(`${forecastApiUrl}?${params.toString()}`);
+            const data = await response.json();
+
+            if (!response.ok || !data.current) {
+                throw new Error(data.reason || "Unable to load weather data right now.");
+            }
+
+            return data;
+        }
+
+        function renderWeather(location, data) {
+            const currentWeather = data.current;
+            const weatherDetails = getWeatherDetails(currentWeather.weather_code);
+            const weatherDescription = weatherDetails.description;
+            const comfortScore = calculateComfortScore(currentWeather);
+            const climateSummary = getClimateSummary(comfortScore);
+            const isDay = currentWeather.is_day === 1;
+            const visibilityKm = Math.round(currentWeather.visibility / 1000);
+            const cityLine = `${location.name}, ${location.country}`;
+
+            cityElement.textContent = cityLine;
+            conditionElement.textContent = weatherDescription;
+            tempElement.innerHTML = `${Math.round(currentWeather.temperature_2m)}&deg;C`;
+            feelsLikeElement.innerHTML = `Feels like ${Math.round(currentWeather.apparent_temperature)}&deg;C`;
+            observationTimeElement.textContent = formatObservationTime(currentWeather.time);
+            timezoneElement.textContent = location.timezone || data.timezone;
+            localDateElement.textContent = formatLocalDate(currentWeather.time);
+            regionElement.textContent = location.admin1 || location.country;
+            humidityElement.textContent = `${currentWeather.relative_humidity_2m}%`;
+            windElement.textContent = `${Math.round(currentWeather.wind_speed_10m)} km/h`;
+            pressureElement.textContent = `${Math.round(currentWeather.pressure_msl)} hPa`;
+            visibilityElement.textContent = `${visibilityKm} km`;
+            humidityNoteElement.textContent = describeHumidity(currentWeather.relative_humidity_2m);
+            windNoteElement.textContent = describeWind(currentWeather.wind_speed_10m);
+            pressureNoteElement.textContent = describePressure(currentWeather.pressure_msl);
+            visibilityNoteElement.textContent = describeVisibility(visibilityKm);
+            dayIndicatorElement.textContent = isDay ? "Day" : "Night";
+            snapshotScoreElement.textContent = comfortScore;
+            snapshotTitleElement.textContent = climateSummary.label;
+            snapshotDescriptionElement.textContent = climateSummary.text;
+            climateSummaryElement.textContent = climateSummary.title;
+            climateTextElement.textContent = climateSummary.text;
+            visibilityHighlightElement.textContent = `${visibilityKm} km`;
+            visibilityTextElement.textContent = describeVisibility(visibilityKm);
+            windHighlightElement.textContent = getWindHighlight(currentWeather.wind_speed_10m);
+            windTextElement.textContent = describeWind(currentWeather.wind_speed_10m);
+            advisoryTextElement.textContent = buildAdvisory(currentWeather);
+            windDirectionElement.textContent = `${Math.round(currentWeather.wind_direction_10m)}°`;
+            uvValueElement.textContent = Math.round(data.daily.uv_index_max?.[0] ?? 0);
+            cloudValueElement.textContent = `${currentWeather.cloud_cover ?? 0}%`;
+            precipValueElement.textContent = `${currentWeather.precipitation ?? 0} mm`;
+            uvIndexTagElement.textContent = `Max UV ${Math.round(data.daily.uv_index_max?.[0] ?? 0)}`;
+            cloudCoverTagElement.textContent = `Cloud Cover ${currentWeather.cloud_cover ?? 0}%`;
+            precipitationTagElement.textContent = `Precipitation ${currentWeather.precipitation ?? 0} mm`;
+
+            heroCityNameElement.textContent = location.name;
+            heroCityTempElement.innerHTML = `${Math.round(currentWeather.temperature_2m)}&deg;C`;
+            heroCityCaptionElement.textContent = `${weatherDescription} in ${location.country}`;
+            heroConditionPillElement.textContent = isDay ? "Daytime Live" : "Night Live";
+
+            setWeatherIcon(weatherDetails.icon, weatherDescription);
+            updateTheme(weatherDetails.icon, isDay);
+        }
+
+        async function checkWeather(city) {
+            const trimmedCity = city.trim();
+
+            if (!trimmedCity) {
+                showError("Please enter a city name.");
+                return;
+            }
+
+            searchButton.disabled = true;
+            clearError();
+            heroConditionPillElement.textContent = "Loading";
+
+            try {
+                const location = await findLocation(trimmedCity);
+                const weatherData = await fetchWeather(location);
+
+                renderWeather(location, weatherData);
+                saveRecentSearch(location.name);
+                searchInput.value = location.name;
+                clearError();
+            } catch (error) {
+                console.error(error);
+                showError(error.message || "Unable to load weather data right now. Please try again.");
+                heroConditionPillElement.textContent = "Offline";
+            } finally {
+                searchButton.disabled = false;
+            }
+        }
+
+        function handleCitySearch(city) {
+            searchInput.value = city;
+            checkWeather(city);
+        }
+
+        searchButton.addEventListener("click", () => {
+            checkWeather(searchInput.value);
+        });
+
+        searchInput.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                checkWeather(searchInput.value);
+            }
+        });
+
+        quickChipsContainer.addEventListener("click", (event) => {
+            const chip = event.target.closest(".chip");
+            if (chip) {
+                handleCitySearch(chip.textContent);
+            }
+        });
+
+        recentSearchesContainer.addEventListener("click", (event) => {
+            const chip = event.target.closest(".history-chip");
+            if (chip) {
+                handleCitySearch(chip.textContent);
+            }
+        });
+
+        clearHistoryButton.addEventListener("click", () => {
+            localStorage.removeItem(storageKey);
+            renderRecentSearches();
+        });
+
+        renderRecentSearches();
+        checkWeather("New York");
+    </script>
+</body>
+</html>
